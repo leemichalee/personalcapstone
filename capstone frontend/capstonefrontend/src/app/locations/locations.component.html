@@ -1,0 +1,48 @@
+<!-- <div class="locations-div">  
+    <div class="map-div">
+        <google-chart [data]="geoChart" (chartSelect)='select($event)' *ngIf=mapReady></google-chart>
+        <div class="table-div">
+            <table>
+                <tr *ngFor="let location of locations">
+                    <td>
+                        <a [routerLink]="['/locations',location.id]">{{location.city}}, {{location.country}}</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div> 
+    <div class="city-selector" *ngIf=country6>
+        //When back Monday, you're adding a "box" that gives an option between 2 cities
+        //when clicking India or China bc they have 2 cities
+        //Make it looks nice btw (alert? prob not)
+    </div>
+</div> -->
+
+<h1 class="toph1">Find a consultant to learn more near you!</h1>
+<div class="locations-div">  
+    <div class="map-div">
+        <google-chart [data]="geoChart" (chartSelect)='select($event)' *ngIf=mapReady></google-chart>
+    </div>
+    <div class="table-div" *ngIf="rightdiv">
+        <table>
+            <tr *ngFor="let location of locations">
+                <td>
+                    <a [routerLink]="['/locations',location.id]">{{location.city}}, {{location.country}}</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="table-div2" *ngIf="rightdivchina">
+        <h1>Which city in China?</h1><br>
+        <a [routerLink]="['/locations',locations[2].id]">Shanghai</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a [routerLink]="['/locations',locations[7].id]">Beijing</a>
+    </div>
+    <div class="table-div2" *ngIf="rightdivindia">
+        <h1>Which city in India?</h1><br>
+        <a [routerLink]="['/locations',locations[1].id]">Delhi</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a [routerLink]="['/locations',locations[8].id]">Mumbai</a>
+    </div>
+</div>
+
+
+<!-- <iframe width="600" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTUeeQXnGDtHvHtx2fQGgXUFgNPoweRDuO_cQYEMOYMqpn6cf39Y8ebU4bvHt1auVnvIuoF19Wo_Kt1/pubchart?oid=754428300&amp;format=interactive"></iframe> -->
