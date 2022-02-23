@@ -1,0 +1,139 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "capstonefrontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/capstonefrontend",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/app/css/bootstrap.css",
+              "src/app/css/fontawesome-all.css",
+              "src/app/css/swiper.css",
+              "src/app/css/magnific-popup.css",
+              "src/app/css/styles.css"
+            ],
+            "scripts": [
+              "src/app/js/bootstrap.min.js",
+              "src/app/js/jquery.easing.min.js",
+              "src/app/js/jquery.magnific-popup.js",
+              "src/app/js/jquery.min.js",
+              "src/app/js/popper.min.js",
+              "src/app/js/scripts.js",
+              "src/app/js/swiper.min.js",
+              "src/app/js/validator.min.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "capstonefrontend:build:production"
+            },
+            "development": {
+              "browserTarget": "capstonefrontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "capstonefrontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/app/css/bootstrap.css",
+              "src/app/css/fontawesome-all.css",
+              "src/app/css/swiper.css",
+              "src/app/css/magnific-popup.css",
+              "src/app/css/styles.css"
+            ],
+            "scripts": [
+              "src/app/js/bootstrap.min.js",
+              "src/app/js/jquery.easing.min.js",
+              "src/app/js/jquery.magnific-popup.js",
+              "src/app/js/jquery.min.js",
+              "src/app/js/popper.min.js",
+              "src/app/js/scripts.js",
+              "src/app/js/swiper.min.js",
+              "src/app/js/validator.min.js"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "capstonefrontend"
+}
